@@ -22,12 +22,14 @@ public class Server {
                                                 socket.getInputStream()));
                 ) {
                     String request = reader.readLine();
-                    System.out.println("Request :" + request);
-                    String response = "Hello from server: " + request.length();
+                    System.out.println("Request: " + request);
+                    String response = (int) (Math.random() * 30 - 10) + "";
                     System.out.println("Response: " + response);
                     writer.write(response);
                     writer.newLine();
                     writer.flush();
+                } catch (NullPointerException e) {
+                    e.printStackTrace();
                 }
         } catch (IOException e) {
             throw new RuntimeException(e);
